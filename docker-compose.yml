@@ -1,0 +1,14 @@
+version: '3'
+services:
+  fluent-bit:
+    image: fluent/fluent-bit:1.8-debug
+    volumes:
+      - ./fluent-bit/etc/fluent-bit.conf:/fluent-bit/etc/fluent-bit.conf
+  kafka:
+    build:
+      context: ./kafka
+    stdin_open: true
+  vector:
+    build:
+      context: ./vector
+    stdin_open: true
